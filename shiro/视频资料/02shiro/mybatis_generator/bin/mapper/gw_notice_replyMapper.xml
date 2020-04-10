@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goaway.mapper.gw_notice_replyMapper">
+  <resultMap id="BaseResultMap" type="com.goaway.entity.gw_notice_reply">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="commentId" jdbcType="INTEGER" property="commentid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="avatarUrl" jdbcType="VARCHAR" property="avatarurl" />
+    <result column="toUserId" jdbcType="INTEGER" property="touserid" />
+    <result column="toNickname" jdbcType="VARCHAR" property="tonickname" />
+    <result column="toAvatarUrl" jdbcType="VARCHAR" property="toavatarurl" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="replyTime" jdbcType="TIMESTAMP" property="replytime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commentId, userId, nickname, avatarUrl, toUserId, toNickname, toAvatarUrl, content, 
+    replyTime, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gw_notice_reply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gw_notice_reply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.goaway.entity.gw_notice_reply">
+    insert into gw_notice_reply (id, commentId, userId, 
+      nickname, avatarUrl, toUserId, 
+      toNickname, toAvatarUrl, content, 
+      replyTime, state)
+    values (#{id,jdbcType=INTEGER}, #{commentid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{nickname,jdbcType=VARCHAR}, #{avatarurl,jdbcType=VARCHAR}, #{touserid,jdbcType=INTEGER}, 
+      #{tonickname,jdbcType=VARCHAR}, #{toavatarurl,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{replytime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goaway.entity.gw_notice_reply">
+    insert into gw_notice_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commentid != null">
+        commentId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl,
+      </if>
+      <if test="touserid != null">
+        toUserId,
+      </if>
+      <if test="tonickname != null">
+        toNickname,
+      </if>
+      <if test="toavatarurl != null">
+        toAvatarUrl,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="replytime != null">
+        replyTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentid != null">
+        #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="touserid != null">
+        #{touserid,jdbcType=INTEGER},
+      </if>
+      <if test="tonickname != null">
+        #{tonickname,jdbcType=VARCHAR},
+      </if>
+      <if test="toavatarurl != null">
+        #{toavatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null">
+        #{replytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goaway.entity.gw_notice_reply">
+    update gw_notice_reply
+    <set>
+      <if test="commentid != null">
+        commentId = #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatarurl != null">
+        avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="touserid != null">
+        toUserId = #{touserid,jdbcType=INTEGER},
+      </if>
+      <if test="tonickname != null">
+        toNickname = #{tonickname,jdbcType=VARCHAR},
+      </if>
+      <if test="toavatarurl != null">
+        toAvatarUrl = #{toavatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="replytime != null">
+        replyTime = #{replytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goaway.entity.gw_notice_reply">
+    update gw_notice_reply
+    set commentId = #{commentid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatarUrl = #{avatarurl,jdbcType=VARCHAR},
+      toUserId = #{touserid,jdbcType=INTEGER},
+      toNickname = #{tonickname,jdbcType=VARCHAR},
+      toAvatarUrl = #{toavatarurl,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      replyTime = #{replytime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.goaway.entity.gw_notice_reply">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="commentId" jdbcType="INTEGER" property="commentid" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="replyTime" jdbcType="DATE" property="replytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commentId, content, userId, replyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gw_notice_reply
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gw_notice_reply
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.goaway.entity.gw_notice_reply">
+    insert into gw_notice_reply (id, commentId, content, 
+      userId, replyTime)
+    values (#{id,jdbcType=INTEGER}, #{commentid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{userid,jdbcType=INTEGER}, #{replytime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goaway.entity.gw_notice_reply">
+    insert into gw_notice_reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commentid != null">
+        commentId,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="replytime != null">
+        replyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commentid != null">
+        #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="replytime != null">
+        #{replytime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goaway.entity.gw_notice_reply">
+    update gw_notice_reply
+    <set>
+      <if test="commentid != null">
+        commentId = #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="replytime != null">
+        replyTime = #{replytime,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goaway.entity.gw_notice_reply">
+    update gw_notice_reply
+    set commentId = #{commentid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      userId = #{userid,jdbcType=INTEGER},
+      replyTime = #{replytime,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

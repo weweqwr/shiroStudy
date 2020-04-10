@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<server port="8080">
+  <module name="02_shiro_Authentication_relam" path="G:/学习文件2/shiro/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/02_shiro_Authentication_relam" type="j2ee"/>
+  <module name="03_shiro_Authentication_relam" path="G:/学习文件2/shiro/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/03_shiro_Authentication_relam" type="j2ee"/>
+  <module context="05_shiro_ssm" name="06_shiro_ssm_shiro" path="G:/学习文件2/shiro/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/06_shiro_ssm_shiro" type="j2ee"/>
+</server>

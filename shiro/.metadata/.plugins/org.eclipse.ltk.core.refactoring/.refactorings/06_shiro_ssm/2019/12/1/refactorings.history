@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;LoginController.java&apos; to &apos;07_shiro_ssm_rememberMe/src/main/java/com.sxt.controller&apos;&#x0D;&#x0A;- Original project: &apos;06_shiro_ssm&apos;&#x0D;&#x0A;- Destination element: &apos;07_shiro_ssm_rememberMe/src/main/java/com.sxt.controller&apos;&#x0D;&#x0A;- Original element: &apos;com.sxt.controller.LoginController.java&apos;" description="Copy compilation unit" destination="=07_shiro_ssm_rememberMe/src\/main\/java&lt;com.sxt.controller" element1="/src\/main\/java&lt;com.sxt.controller{LoginController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1577588153892" units="1" version="1.0"/>
+</session>

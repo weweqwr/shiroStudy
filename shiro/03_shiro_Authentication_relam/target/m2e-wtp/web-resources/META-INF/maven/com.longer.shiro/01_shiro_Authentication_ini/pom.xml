@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.longer.shiro</groupId>
+  <artifactId>01_shiro_Authentication_ini</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>01_shiro_Authentication_ini Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <!-- 版本号 -->
+  <properties>
+  	<shiro.version>1.4.1</shiro.version>
+  	<logging.version>1.2</logging.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+     <!-- 依赖shiro -->
+     <dependency>
+	  <groupId>org.apache.shiro</groupId>
+	  <artifactId>shiro-core</artifactId>
+	  <version>${shiro.version}</version>
+	</dependency>
+	<!-- 引入日志包 -->
+     <dependency>
+	    <groupId>commons-logging</groupId>
+	    <artifactId>commons-logging</artifactId>
+	    <version>${logging.version}</version>
+	</dependency>
+    <!-- maven新建项目后需导入javax.servlet否则jsp页面报错 -->
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>01_shiro_Authentication_ini</finalName>
+  </build>
+</project>

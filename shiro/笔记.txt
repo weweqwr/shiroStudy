@@ -1,0 +1,28 @@
+1、shiro用于用户登录、授权、
+2、ini windows系统文件拓展名（onitialzationFile）
+
+3、anon任意的url都不需要进行认证等功能
+/login.html*=anon
+/**==anon所有路径都放行
+/loginOut*=logout 登录推出过滤器
+/**=authc 所有URL必须通过认证之后才能放行 一般放在最后
+user 如果访问一个已知道用户，比如记住我功能，走这个过滤器
+
+身份验证
+    principals 用户名
+    credentials 密码
+	第一步创建项目、第二步创建shiro.ini、第三步修改pop.xml 第四步写代码测试
+	第五步相关方法总结
+4、散列算法和凭证验证
+	4.1散列算法【就是加密的算法】
+		MD5(是不可逆的，哪些网站是因为有人破解之后存在数据库，复杂一点		        的可能就解密不了)
+		SHA1
+	4.2用户名加地址作为用户的盐 散列两次
+5、@Lazy为懒加载
+6、cookie在服务器 session在客户端
+7、ctrl+shit+del清除浏览器缓存
+8、权限判断
+	@RequiresPermissions(value={"",""})判断当前请求的线程是否又value里的所有权	限
+	@RequiresAuthenticatin 判断当前线程是否认证
+	@RequiresRoles(value={"",""}判断当前线程是否又value里面的所有角色)
+		

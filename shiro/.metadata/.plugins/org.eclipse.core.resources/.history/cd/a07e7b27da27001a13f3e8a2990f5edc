@@ -1,0 +1,10 @@
+package com.longer.shiro;
+/**
+ * 用户认证
+ * **/
+public class TestAPP {
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,13 @@
+package com.longer.shiro;
+/**
+ * 用户认证
+ * **/
+public class TestAPP {
+	public static void main(String[] args) {
+		String username="zhansan";
+		Stirng password="123466";
+		//1、创建一个安全管理器的工厂
+		Factory<>
+	}
+
+}

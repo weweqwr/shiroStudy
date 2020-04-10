@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 声明凭证匹配器 -->
+	<bean id="credentialsMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<!-- 注入加密方式 -->
+		<property name="hashAlgorithmName" value="md5"></property>
+		<!-- 注入散列次数 -->
+		<property name="hashIterations" value="2"></property>
+	
+	</bean>
+
+	<!-- 声明userRealm -->
+	<bean id="userRealm" class="com.sxt.realm.UserRealm">
+		<!-- 注入凭证匹配器 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+	
+	<!-- 声明一个cookie的对象 -->
+	<bean id="cookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+	    <constructor-arg value="remberMe"></constructor-arg>
+	    <!-- 只有http请求才会生效 -->
+	    <property name="httpOnly" value="true"></property>
+	    <!-- 设置cookie的存活时间，单位是秒 -->
+	    <property name="maxAge" value="604800"></property>
+	</bean>
+	
+	<!-- 声明一个cookie管理器 -->
+	<bean id="cookieManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+	    <property name="cookie" ref="cookie"></property>
+	</bean>
+	<!-- 声明一个 -->
+	
+	<!-- 声明安全管理器 -->
+	<bean id="securityManager"
+		class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- 注入realm -->
+		<property name="realm" ref="userRealm"></property>
+			<!-- 注入一个记住我的管理器 -->
+		<property name="rememberMeManager" ref="cookieManager"></property>
+	</bean>
+	
+	<!-- 声明我的自定义过滤器对象 -->
+	<bean id="rememberMe" class="com.sxt.filter.RemberMeFilter"></bean>
+	<bean id="myauthc" class="com.sxt.filter.MyFormAuthenticationFilter"></bean>
+
+	<!-- 配置shrio的过滤器链 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 注入安全管理器 -->
+		<property name="securityManager" ref="securityManager"></property>
+		<!-- 注入如果没认证  跳转的页面 -->
+		<property name="loginUrl" value="/index.jsp"></property>
+		<!-- 未授权的跳转页 -->
+		<property name="unauthorizedUrl" value="login/toUnauthorized.action"></property>
+		<!-- 注入自定义的过滤器 -->
+		<property name="filters">
+		    <map>
+		      
+		        <entry key="authc" value-ref="myauthc"></entry>
+		    </map>
+		   
+		</property>
+		
+
+		
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- 放行系统首页 -->
+			    /index.jsp*=anon
+			    <!-- 放行跳转到登陆页面的地  -->  
+				/login/toLogin*=anon
+				<!-- 放行登陆的方法 -->
+				/login/login*=anon
+				
+				<!-- 其它的页面都要认证 -->
+				/**=authc
+			</value>
+		</property>
+	</bean>
+</beans>

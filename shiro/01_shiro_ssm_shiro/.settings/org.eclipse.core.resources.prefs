@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/longer/mapper/PermissionMapper.java=UTF-8
+encoding//src/main/java/com/longer/service/PermissionService.java=UTF-8
+encoding//src/main/java/com/longer/service/RoleService.java=UTF-8
+encoding//src/main/java/com/longer/service/UserService.java=UTF-8
+encoding//src/main/java/com/longer/service/impl/PermissionServiceImpl.java=UTF-8
+encoding//src/main/java/com/longer/service/impl/RoleServiceImpl.java=UTF-8
+encoding//src/main/java/com/longer/service/impl/UserServiceImpl.java=UTF-8

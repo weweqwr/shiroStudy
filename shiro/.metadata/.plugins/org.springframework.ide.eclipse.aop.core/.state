@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="06_shiro_ssm"/>
+<aop-project name="07_shiro_ssm_rememberMe"/>
+<aop-project name="05_shiro_ssm"/>
+<aop-project name="08_shiro_ssm_ajax"/>
+</aop-reference-model>

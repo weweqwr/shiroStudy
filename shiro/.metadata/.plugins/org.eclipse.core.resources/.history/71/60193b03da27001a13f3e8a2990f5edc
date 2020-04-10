@@ -1,0 +1,8 @@
+package com.longer.shiro;
+
+public class TestAPP {
+	public static void main(String[] args) {
+		
+	}
+
+}

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goaway.mapper.gw_noticeMapper">
+  <resultMap id="BaseResultMap" type="com.goaway.entity.gw_notice">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="noticeType" jdbcType="INTEGER" property="noticetype" />
+    <result column="originator" jdbcType="INTEGER" property="originator" />
+    <result column="groupId" jdbcType="VARCHAR" property="groupid" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.goaway.entity.gw_notice">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, noticeType, originator, groupId, createTime, state
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gw_notice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gw_notice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.goaway.entity.gw_notice">
+    insert into gw_notice (id, title, noticeType, 
+      originator, groupId, createTime, 
+      state, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{noticetype,jdbcType=INTEGER}, 
+      #{originator,jdbcType=INTEGER}, #{groupid,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.goaway.entity.gw_notice">
+    insert into gw_notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="noticetype != null">
+        noticeType,
+      </if>
+      <if test="originator != null">
+        originator,
+      </if>
+      <if test="groupid != null">
+        groupId,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="noticetype != null">
+        #{noticetype,jdbcType=INTEGER},
+      </if>
+      <if test="originator != null">
+        #{originator,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="noticetype != null">
+        noticeType = #{noticetype,jdbcType=INTEGER},
+      </if>
+      <if test="originator != null">
+        originator = #{originator,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null">
+        groupId = #{groupid,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    set title = #{title,jdbcType=VARCHAR},
+      noticeType = #{noticetype,jdbcType=INTEGER},
+      originator = #{originator,jdbcType=INTEGER},
+      groupId = #{groupid,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    set title = #{title,jdbcType=VARCHAR},
+      noticeType = #{noticetype,jdbcType=INTEGER},
+      originator = #{originator,jdbcType=INTEGER},
+      groupId = #{groupid,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.goaway.entity.gw_notice">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="noticeType" jdbcType="VARCHAR" property="noticetype" />
+    <result column="originator" jdbcType="INTEGER" property="originator" />
+    <result column="groupId" jdbcType="INTEGER" property="groupid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.goaway.entity.gw_notice">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, noticeType, originator, groupId
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gw_notice
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gw_notice
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.goaway.entity.gw_notice">
+    insert into gw_notice (id, title, noticeType, 
+      originator, groupId, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{noticetype,jdbcType=VARCHAR}, 
+      #{originator,jdbcType=INTEGER}, #{groupid,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.goaway.entity.gw_notice">
+    insert into gw_notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="noticetype != null">
+        noticeType,
+      </if>
+      <if test="originator != null">
+        originator,
+      </if>
+      <if test="groupid != null">
+        groupId,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="noticetype != null">
+        #{noticetype,jdbcType=VARCHAR},
+      </if>
+      <if test="originator != null">
+        #{originator,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="noticetype != null">
+        noticeType = #{noticetype,jdbcType=VARCHAR},
+      </if>
+      <if test="originator != null">
+        originator = #{originator,jdbcType=INTEGER},
+      </if>
+      <if test="groupid != null">
+        groupId = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    set title = #{title,jdbcType=VARCHAR},
+      noticeType = #{noticetype,jdbcType=VARCHAR},
+      originator = #{originator,jdbcType=INTEGER},
+      groupId = #{groupid,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.goaway.entity.gw_notice">
+    update gw_notice
+    set title = #{title,jdbcType=VARCHAR},
+      noticeType = #{noticetype,jdbcType=VARCHAR},
+      originator = #{originator,jdbcType=INTEGER},
+      groupId = #{groupid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

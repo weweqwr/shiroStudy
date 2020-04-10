@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<!-- 配置文件 -->
+	<context:property-placeholder
+		location="classpath:db.properties" system-properties-mode="FALLBACK" />
+
+	<!-- 声明数据源 -->
+	<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+		<!-- 注入相关属性 -->
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+
+
+		<property name="initialSize" value="${initialSize}"></property>
+		<property name="maxActive" value="${maxActive}"></property>
+		<property name="minIdle" value="${minIdle}"></property>
+		<property name="filters" value="${filters}"></property>
+	</bean>
+
+	<!-- 声明mybatis的配置类 -->
+	<bean id="configuration"
+		class="org.apache.ibatis.session.Configuration">
+		<property name="logImpl"
+			value="org.apache.ibatis.logging.stdout.StdOutImpl"></property>
+	</bean>
+
+	<!-- 配置sqlSessionFacotry -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 注入数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 注入配置类 -->
+		<property name="configuration" ref="configuration"></property>
+		<!-- 配置mapper.xml -->
+		<property name="mapperLocations">
+			<array>
+				<value>classpath:mapper/*Mapper.xml</value>
+			</array>
+		</property>
+		<!-- 配置分页插件 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor"></bean>
+			</array>
+		</property>
+	</bean>
+
+
+	<!-- 配置扫描mapper接口的对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="com.longer.mapper"></property>
+		<!-- <property name="basePackage"> <value> com.sxt.mapper com.bjsxt.mapper 
+			</value> </property> -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+
+</beans>
